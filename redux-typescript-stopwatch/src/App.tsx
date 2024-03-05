@@ -18,7 +18,7 @@ import Draggable from "react-draggable";
       </div>
       <footer id='footer' className="text-center">
         Coded by:
-        <a href={"https://github.com/CyberRain94"} target="_blank">
+        <a href={"https://github.com/CyberRain94"} target="_blank" rel="noreferrer">
           CyberRain94
         </a>
       </footer>
