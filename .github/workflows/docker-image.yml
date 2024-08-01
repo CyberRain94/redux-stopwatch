@@ -19,5 +19,5 @@ jobs:
 
     - name: Build and push the Docker image
       run: |
-       docker build -f redux-typescript-stopwatch/Dockerfile -t ghcr.io/cyberrain94/redux-typescript-stopwatch:latest redux-typescript-stopwatch
-       docker push ghcr.io/cyberrain94/redux-typescript-stopwatch:latest
+       docker build -f redux-typescript-stopwatch/Dockerfile -t ghcr.io/cyberrain94/reduxtypescriptstopwatch:latest reduxtypescriptstopwatch
+       docker push ghcr.io/cyberrain94/reduxtypescriptstopwatch:latest
