@@ -1,0 +1,23 @@
+name: Docker Image CI for GHCR
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build_and_publish:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Log in to Github Container Registry 
+      run: echo "${{ secrets.GH_PAT }}" | docker login ghcr.io -u cyberrain94 --password-stdin
+
+    - name: Build and push the Docker image
+      run: |
+       docker build -f redux-typescript-stopwatch/Dockerfile -t ghcr.io/cyberrain94/redux-typescript-stopwatch:latest redux-typescript-stopwatch
+       docker push ghcr.io/cyberrain94/redux-typescript-stopwatch:latest
