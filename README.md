@@ -1,34 +1,198 @@
-Getting Started with Create React App
-This project was bootstrapped with Create React App.
+Redux Stopwatch 🏃‍♂️🕒
+A stopwatch application built with React, Redux Toolkit (RTK), and TypeScript. Demonstrates global state management, time-based updates, and drag-and-drop UI using modern React patterns.
 
-Available Scripts
-In the project directory, you can run:
 
-npm start
-Runs the app in the development mode.
-Open http://localhost:3000 to view it in your browser.
+🚀 Features
+Start/Pause/Reset functionality.
+Elapsed Time formatted as HH:MM:SS.
+Drag-and-Drop UI for interactive elements.
+TypeScript for type-safe Redux state and actions.
+Immutable State Updates with Redux Toolkit’s Immer.
+Redux DevTools support for debugging.
+Clean Architecture with feature-based slices.
+🛠 Technologies & Tools
+Tool/Library	Purpose	Documentation
+React	UI Framework	react.dev
+Redux Toolkit	State Management	redux-toolkit.js.org
+TypeScript	Type Safety	typescriptlang.org
+react-draggable	Drag-and-Drop UI	github.com/react-grid-layout
+Vite	Build Tool (if migrated)	vitejs.dev
 
-The page will reload when you make changes.
-You may also see any lint errors in the console.
+
+📦 Project Structure
+redux-stopwatch/
+├── public/                  # Static assets
+├── src/
+│   ├── Components/          # Reusable UI Components
+│   │   ├── Draggableicon.jsx
+│   │   └── Draggableicon.css
+│   │
+│   ├── app/                 # Redux Setup
+│   │   ├── hooks.ts         # Typed `useAppDispatch` and `useAppSelector`
+│   │   └── store.ts         # Redux store configuration
+│   │
+│   ├── features/            # Feature-based Redux Slices
+│   │   └── counter/         # Stopwatch logic
+│   │       ├── stopwatchSlice.ts  # Redux slice (actions + reducers)
+│   │       ├── Stopwatch.tsx        # React component
+│   │       └── Stopwatch.module.css # CSS for Stopwatch
+│   │
+│   ├── App.css              # Global styles
+│   ├── App.test.tsx         # Tests
+│   ├── App.tsx              # Root component (Redux Provider)
+│   ├── index.css            # Global CSS reset
+│   ├── index.tsx            # Entry point
+│   └── react-app-env.d.ts   # TypeScript declarations
+│
+├── .gitignore
+├── Dockerfile               # Docker configuration
+├── docker-compose.yml      # Docker setup (optional)
+├── package.json            # Dependencies and scripts
+├── tsconfig.json           # TypeScript config
+├── README.md               # This file!
+└── LICENSE
+
+
+🏗 Getting Started
+Prerequisites
+Node.js (v18+) and npm/yarn/pnpm.
+Redux DevTools (recommended for debugging).
+Install the browser extension: https://redux-devtools.github.io/
+Installation
+Clone the repository:
+   git clone https://github.com/CyberRain94/redux-stopwatch.git
+   cd redux-stopwatch
+
+Install dependencies:
+   npm install
+   # or
+   yarn install
+
+Run the app:
+   npm start
+   # or
+   yarn start
+
+Open http://localhost:3000 in your browser.
+
+📝 How It Works
+Redux Toolkit Architecture
+This project follows Redux Toolkit best practices:
+
+Store Setup (app/store.ts):
+Uses configureStore to simplify store configuration.
+Auto-includes Redux DevTools and thunk middleware.
+   import { configureStore } from '@reduxjs/toolkit';
+   import stopwatchReducer from '../features/counter/stopwatchSlice';
+
+   export const store = configureStore({
+     reducer: {
+       stopwatch: stopwatchReducer,
+     },
+   });
+
+Feature Slices (features/counter/stopwatchSlice.ts):
+Defines actions, reducers, and state in one file using createSlice.
+Uses Immer for immutable updates:
+     tick: (state) => { state.elapsedTime += 1; }, // Safe mutation!
+
+Auto-generates action creators:
+     export const { start, stop, reset, tick } = stopwatchSlice.actions;
+
+React Component (features/counter/Stopwatch.tsx):
+Uses useAppSelector to access Redux state.
+Uses useAppDispatch to dispatch actions.
+Side Effect (useEffect) manages the setInterval for the stopwatch tick.
+Key Features in Code
+Time Formatting:
+Converts seconds to HH:MM:SS:
+  const formatTime = (seconds: number): string => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    return `${hours}:${minutes}:${secs}`;
+  };
+
+Drag-and-Drop UI:
+Uses react-draggable to make the stopwatch movable:
+  import { Draggable } from 'react-draggable';
+
+  <Draggable>
+    <div className="draggable-stopwatch">
+      <Stopwatch />
+    </div>
+  </Draggable>
+
+🔧 Running Tests
+Unit tests are included for critical components:
 
 npm test
-Launches the test runner in the interactive watch mode.
-See the section about running tests for more information.
+# or
+yarn test
 
-npm run build
-Builds the app for production to the build folder.
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Key test files:
 
-The build is minified and the filenames include the hashes.
-Your app is ready to be deployed!
+App.test.tsx: Tests the root component.
+Consider adding: stopwatchSlice.test.ts (mock reducers).
+🌊 Docker Support (Optional)
+This project includes Docker configuration for containerized deployment.
 
-See the section about deployment for more information.
+Build the Docker image:
+   docker-compose build
 
-npm run eject
-Note: this is a one-way operation. Once you eject, you can't go back!
+Run the container:
+   docker-compose up
 
-If you aren't satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.
+Access the app at: http://localhost:3000
+🔄 Roadmap
+[ ] Add RTK Query: For data fetching (e.g., syncing with a backend).
+[ ] Local Storage: Persist stopwatch state between sessions.
+[ ] Lap Tracking: Add functionality to record intermediate times.
+[ ] Dark Mode: Enhance theming with CSS variables.
+📚 Useful Links
+Redux Toolkit Documentation: https://redux-toolkit.js.org/
+React Documentation: https://react.dev/
+Redux DevTools: https://redux-devtools.github.io/
+RTK Query (Optional): https://redux-toolkit.js.org/rtk-query/overview
+💡 Why Redux Toolkit?
+From the official Redux Toolkit docs:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except eject will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+"We want all Redux users to write their Redux code with Redux Toolkit, because it simplifies your code and eliminates many common Redux mistakes and bugs!"
 
-You don't have to ever use eject. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Benefits in This Project:
+✅ Reduced Boilerplate: No manual switch statements or action type strings.
+✅ Immutable Updates: Immer simplifies state management.
+✅ Type Safety: TypeScript integration for actions, state, and hooks.
+✅ Debugging: Redux DevTools auto-included.
+
+🎯 Motivation
+This project serves as:
+
+A learning resource for Redux Toolkit + TypeScript.
+A demo of drag-and-drop UIs with React.
+A template for feature-based Redux applications.
+👨‍💻 Contributing
+Contributions are welcome! Please open an issue or submit a pull request for:
+
+Bug fixes.
+Feature requests.
+Improved documentation.
+📜 License
+This project is licensed under the MIT License. See LICENSE for details.
+
+❓ FAQ
+How do I add a new feature?
+Create a new slice in features/{featureName} (e.g., features/laps).
+Update the store to include the new reducer:
+   reducer: {
+     stopwatch: stopwatchReducer,
+     laps: lapsReducer,
+   },
+
+How does the stopwatch tick work?
+The useEffect in Stopwatch.tsx sets up a setInterval to dispatch tick() every second when isRunning is true.
+The interval is cleaned up on component unmount to prevent memory leaks.
+Can I integrate with a backend?
+Yes! Use RTK Query (not included here) to fetch/sync data. Example:
+
+const api = createApi({ baseQuery: fetchBaseQuery({ baseUrl: '/' }) });
