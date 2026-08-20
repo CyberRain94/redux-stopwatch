@@ -4,7 +4,9 @@
 
 A **stopwatch application** built with **React**, **Redux Toolkit (RTK)**, and **TypeScript**. Demonstrates **global state management**, **time-based updates**, and **drag-and-drop UI** using modern React patterns.
 
-<img src="https://github.com/user-attachments/assets/2b2fe028-974043a5-be69-4c80a1a49c80" alt="Stopwatch Preview" width="3840" height="2160" />
+Stopwatch-Preview
+
+<img width="3840" height="2160" alt="Screenshot (1)" src="https://github.com/user-attachments/assets/2b2fe028-97f4-43a5-be69-380eebfe4c80"/>
 
 ---
 
