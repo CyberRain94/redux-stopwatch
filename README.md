@@ -1,8 +1,11 @@
 Redux Stopwatch 🏃‍♂️🕒
+
 A stopwatch application built with React, Redux Toolkit (RTK), and TypeScript. Demonstrates global state management, time-based updates, and drag-and-drop UI using modern React patterns.
 
 
 🚀 Features
+
+
 Start/Pause/Reset functionality.
 Elapsed Time formatted as HH:MM:SS.
 Drag-and-Drop UI for interactive elements.
@@ -20,6 +23,7 @@ Vite	Build Tool (if migrated)	vitejs.dev
 
 
 📦 Project Structure
+
 redux-stopwatch/
 ├── public/                  # Static assets
 ├── src/
@@ -54,6 +58,7 @@ redux-stopwatch/
 
 
 🏗 Getting Started
+
 Prerequisites
 Node.js (v18+) and npm/yarn/pnpm.
 Redux DevTools (recommended for debugging).
@@ -76,6 +81,7 @@ Run the app:
 Open http://localhost:3000 in your browser.
 
 📝 How It Works
+
 Redux Toolkit Architecture
 This project follows Redux Toolkit best practices:
 
@@ -144,7 +150,9 @@ Run the container:
    docker-compose up
 
 Access the app at: http://localhost:3000
+
 🔄 Roadmap
+
 [ ] Add RTK Query: For data fetching (e.g., syncing with a backend).
 [ ] Local Storage: Persist stopwatch state between sessions.
 [ ] Lap Tracking: Add functionality to record intermediate times.
@@ -154,7 +162,9 @@ Redux Toolkit Documentation: https://redux-toolkit.js.org/
 React Documentation: https://react.dev/
 Redux DevTools: https://redux-devtools.github.io/
 RTK Query (Optional): https://redux-toolkit.js.org/rtk-query/overview
+
 💡 Why Redux Toolkit?
+
 From the official Redux Toolkit docs:
 
 "We want all Redux users to write their Redux code with Redux Toolkit, because it simplifies your code and eliminates many common Redux mistakes and bugs!"
@@ -166,6 +176,7 @@ Benefits in This Project:
 ✅ Debugging: Redux DevTools auto-included.
 
 🎯 Motivation
+
 This project serves as:
 
 A learning resource for Redux Toolkit + TypeScript.
@@ -177,10 +188,13 @@ Contributions are welcome! Please open an issue or submit a pull request for:
 Bug fixes.
 Feature requests.
 Improved documentation.
+
 📜 License
+
 This project is licensed under the MIT License. See LICENSE for details.
 
 ❓ FAQ
+
 How do I add a new feature?
 Create a new slice in features/{featureName} (e.g., features/laps).
 Update the store to include the new reducer:
