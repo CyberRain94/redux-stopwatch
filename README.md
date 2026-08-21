@@ -206,7 +206,6 @@ This project includes **Docker configuration** for containerized deployment.
 - [ ] **Add RTK Query**: For data fetching (e.g., syncing with a backend).
 - [ ] **Local Storage**: Persist stopwatch state between sessions.
 - [ ] **Lap Tracking**: Add functionality to record intermediate times.
-- [ ] **Dark Mode**: Enhance theming with CSS variables.
 
 ---
 
@@ -226,9 +225,13 @@ From the [official Redux Toolkit docs](https://redux-toolkit.js.org/introduction
 > **"We want all Redux users to write their Redux code with Redux Toolkit, because it simplifies your code and eliminates many common Redux mistakes and bugs!"**
 
 ### Benefits in This Project:
+
 ✅ **Reduced Boilerplate**: No manual `switch` statements or action type strings.
+
 ✅ **Immutable Updates**: Immer simplifies state management.
+
 ✅ **Type Safety**: TypeScript integration for actions, state, and hooks.
+
 ✅ **Debugging**: Redux DevTools auto-included.
 
 ---
